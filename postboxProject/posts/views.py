@@ -1,7 +1,10 @@
 from .models import Post, Comment
 from .serializers import PostSerializer, CommentSerializer
 from rest_framework.viewsets import ModelViewSet
+from django.shortcuts import render
 
+def page_not_found(request, exception):
+    return render(request, '404.html', status=404)
 
 class PostViewSet(ModelViewSet):
     queryset = Post.objects.all()
